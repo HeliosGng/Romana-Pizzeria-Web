@@ -1,0 +1,8 @@
+{
+  "name": "Romana Pizza",
+  "description": "An artisan pizza restaurant website with multilingual English & Albanian translations and a secure menu admin dashboard.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
