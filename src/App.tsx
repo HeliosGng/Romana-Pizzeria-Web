@@ -67,7 +67,7 @@ export default function App() {
   const fetchMenuItems = async () => {
     setIsLoading(true);
     try {
-      const response = await fetch("/api/menu");
+      const response = await fetch("/data/menu.json");
       if (response.ok) {
         const data = await response.json();
         setMenuItems(data);

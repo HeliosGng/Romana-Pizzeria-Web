@@ -310,7 +310,7 @@ app.post("/api/admin/logout", (req, res) => {
 // ---- PUBLIC AND RESTAURANT CORE ENDPOINTS ----
 
 // GET all menu items
-app.get("/api/menu", (req, res) => {
+app.get("/data/menu.json", (req, res) => {
   const menuItems = readMenuData();
   res.json(menuItems);
 });
@@ -324,7 +324,7 @@ app.post("/api/visit", (req, res) => {
 });
 
 // POST reorder all menu items (PROTECTED - Admin only)
-app.post("/api/menu/reorder", authMiddleware, (req, res) => {
+app.post("/data/menu.json/reorder", authMiddleware, (req, res) => {
   const { orderedIds } = req.body;
   if (!orderedIds || !Array.isArray(orderedIds)) {
     return res.status(400).json({ error: "Invalid orderedIds array parameter" });
@@ -353,13 +353,13 @@ app.post("/api/menu/reorder", authMiddleware, (req, res) => {
 });
 
 // GET orders stats (PROTECTED - Admin panel ONLY)
-app.get("/api/orders/stats", authMiddleware, (req, res) => {
+app.get("/data/orders.json/stats", authMiddleware, (req, res) => {
   const stats = readStatsData();
   res.json(stats);
 });
 
 // POST a new order (PUBLIC - Customer checkout)
-app.post("/api/orders", (req, res) => {
+app.post("/data/orders.json", (req, res) => {
   const newOrder = req.body;
   if (!newOrder || !newOrder.customerName || !newOrder.total) {
     return res.status(400).json({ error: "Invalid order data" });
@@ -389,7 +389,7 @@ app.post("/api/orders", (req, res) => {
 });
 
 // POST a new item or UPDATE an existing one (PROTECTED - Admin only)
-app.post("/api/menu", authMiddleware, (req, res) => {
+app.post("/data/menu.json", authMiddleware, (req, res) => {
   const item = req.body;
   if (!item || typeof item !== "object") {
     return res.status(400).json({ error: "Invalid data format" });
@@ -423,7 +423,7 @@ app.post("/api/menu", authMiddleware, (req, res) => {
 });
 
 // DELETE a menu item (PROTECTED - Admin only)
-app.delete("/api/menu/:id", authMiddleware, (req, res) => {
+app.delete("/data/menu.json/:id", authMiddleware, (req, res) => {
   const { id } = req.params;
   const menuItems = readMenuData();
   const filteredItems = menuItems.filter((i: any) => i.id !== id);
