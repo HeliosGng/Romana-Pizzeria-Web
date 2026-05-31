@@ -48,7 +48,7 @@ export default function AdminDashboard({
     try {
       setStatsLoading(true);
       const token = localStorage.getItem("romana_admin_token");
-      const res = await fetch("/data/orders.json/stats", {
+      const res = await fetch("/api/orders/stats", {
         headers: token ? { "Authorization": `Bearer ${token}` } : {}
       });
       if (res.ok) {
@@ -97,7 +97,7 @@ export default function AdminDashboard({
     try {
       const orderedIds = reorderedList.map(item => item.id);
       const token = localStorage.getItem("romana_admin_token");
-      const res = await fetch("/data/menu.json/reorder", {
+      const res = await fetch("/api/menu/reorder", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -416,7 +416,7 @@ export default function AdminDashboard({
     }
 
     try {
-      const response = await fetch("/data/menu.json", {
+      const response = await fetch("/api/menu", {
         method: "POST",
         headers: { 
           "Content-Type": "application/json",
@@ -454,7 +454,7 @@ export default function AdminDashboard({
     setSubmitError("");
 
     try {
-      const response = await fetch(`/data/menu.json/${id}`, {
+      const response = await fetch(`/api/menu/${id}`, {
         method: "DELETE",
         headers: {
           "Authorization": `Bearer ${localStorage.getItem("romana_admin_token")}`
