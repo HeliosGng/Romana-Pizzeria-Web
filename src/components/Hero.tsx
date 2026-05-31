@@ -33,7 +33,7 @@ export default function Hero({ currentLanguage, onExploreMenu }: HeroProps) {
     return () => clearInterval(interval);
   }, []);
 
-  const heroImageSrc = "/src/assets/images/romana_pizza_hero_1780135272225.png";
+  const heroImageSrc = "/romana_pizza_hero_1780135272225.png";
 
   return (
     <section id="hero-section" className="relative bg-brand-beige text-brand-dark pt-10 pb-16 lg:pb-24 overflow-hidden border-b border-brand-dark">
